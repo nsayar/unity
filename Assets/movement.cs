@@ -8,8 +8,10 @@ using UnityEngine;
 public class movement : MonoBehaviour
 {
     public SpriteRenderer sprite;
-
+    public float speed = 5f;
     public Rigidbody2D rigid;
+    public KeyCode UpkKey = KeyCode.W;
+    public KeyCode downkKey = KeyCode.S;
     // Start is called before the first frame update
     void Start()
     { print("hello from the start");
@@ -20,13 +22,13 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(UpkKey)&& transform.position.y <4.5f)
         {
-            rigid.velocity = Vector2.up;
+            rigid.velocity = Vector2.up*speed; 
         }
-        else if (Input.GetKey(KeyCode.S)) 
+        else if (Input.GetKey(downkKey)&& transform.position.y >-4.5f) 
         {
-            rigid.velocity =Vector2.down;
+            rigid.velocity =Vector2.down*speed;
         }
         else
         {
